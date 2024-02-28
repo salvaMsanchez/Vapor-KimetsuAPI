@@ -29,7 +29,7 @@
 * [Licencia](#licencia)
 
 <a name="kimetsu"></a>
-## ⚔️ Kimetsu no Yaiba Server ⚔️
+## ⚔️ Kimetsu no Yaiba API ⚔️
 
 ![Kimetsu no Yaiba image](imagesReadme/kimetsu.jpeg)
 
@@ -39,7 +39,7 @@
 <a name="licencia"></a>
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](https://github.com/salvaMsanchez/DragonBallApp-Android/blob/main/LICENSE.md) para más detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](https://github.com/salvaMsanchez/Vapor-Servers/blob/main/LICENSE.md) para más detalles.
 
 ---
 

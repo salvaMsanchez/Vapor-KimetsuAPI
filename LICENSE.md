@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Salvador Moreno Sánchez
+Copyright (c) 2024 Salvador Moreno Sánchez
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files (the "Software"), 
