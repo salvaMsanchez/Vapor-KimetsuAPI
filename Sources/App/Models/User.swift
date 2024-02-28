@@ -41,3 +41,20 @@ final class User: Model {
     }
     
 }
+
+// DTOs
+extension User {
+    
+    struct Create: Content {
+        let name: String
+        let email: String
+        let password: String
+    }
+    
+    struct Public: Content {
+        let id: UUID?
+        let name: String
+        let email: String
+    }
+    
+}
