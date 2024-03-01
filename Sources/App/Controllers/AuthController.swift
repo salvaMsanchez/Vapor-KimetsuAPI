@@ -12,7 +12,11 @@ struct AuthController: RouteCollection {
     
     func boot(routes: Vapor.RoutesBuilder) throws {
         
-        routes.post("users", use: testUserCreation)
+        routes.group("auth") { builder in
+            builder.post("signup", use: signUp)
+        }
+        
+        
     }
     
     
@@ -20,13 +24,24 @@ struct AuthController: RouteCollection {
 
 extension AuthController {
     
-    func testUserCreation(req: Request) async throws -> User.Public {
+    func signUp(req: Request) async throws -> JWTToken.Public {
         
+        // Validate content entry
+        try User.Create.validate(content: req)
+        
+        // Decode user data
         let userCreate = try req.content.decode(User.Create.self)
-        let user = User(name: userCreate.name, email: userCreate.email, password: userCreate.password)
+        let passwordHashed = try req.password.hash(userCreate.password)
         
+        // Save user to DB
+        let user = User(name: userCreate.name, email: userCreate.email, password: passwordHashed)
         try await user.create(on: req.db)
         
-        return User.Public(id: user.id, name: user.name, email: user.email)
+        // Generate tokens
+        let tokens = JWTToken.generateToken(userID: user.id!)
+        let accessSigned = try req.jwt.sign(tokens.accessToken)
+        let refreshSigned = try req.jwt.sign(tokens.refreshToken)
+        
+        return JWTToken.Public(accessToken: accessSigned, refreshToken: refreshSigned)
     }
 }
