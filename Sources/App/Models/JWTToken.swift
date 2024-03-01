@@ -13,7 +13,7 @@ enum JWTTokenType: String, Codable {
     case refresh
 }
 
-struct JWTToken: Content, JWTPayload {
+struct JWTToken: Content, JWTPayload, Authenticatable {
     // MARK: - Properties
     var exp: ExpirationClaim
     var iss: IssuerClaim
