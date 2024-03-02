@@ -7,6 +7,7 @@ func routes(_ app: Application) throws {
             try builder.register(collection: AuxiliarController())
             try builder.register(collection: AuthController())
             try builder.register(collection: NewsController())
+            try builder.register(collection: EpisodesController())
         }
     }
 }

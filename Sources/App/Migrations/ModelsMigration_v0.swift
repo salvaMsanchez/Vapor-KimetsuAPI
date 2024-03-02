@@ -39,7 +39,7 @@ struct ModelsMigration_v0: AsyncMigration {
             .schema(Episode.schema)
             .id()
             .field("created_at", .string)
-            .field("episode_number", .string, .required)
+            .field("episode_number", .int, .required)
             .field("title", .string, .required)
             .field("aired_at", .string)
             .field("summary", .string, .required)
