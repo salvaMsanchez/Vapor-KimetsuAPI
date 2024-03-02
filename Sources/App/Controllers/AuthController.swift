@@ -23,7 +23,6 @@ struct AuthController: RouteCollection {
 }
 
 extension AuthController {
-    
     func signUp(req: Request) async throws -> JWTToken.Public {
         // Validate content entry
         try User.Create.validate(content: req)

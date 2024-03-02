@@ -9,19 +9,13 @@ import Foundation
 import Vapor
 
 struct AuxiliarController: RouteCollection {
-    
     func boot(routes: Vapor.RoutesBuilder) throws {
-        
         routes.get("version", use: needsUpdate)
-        
     }
-    
 }
 
 extension AuxiliarController {
-    
     func needsUpdate(req: Request) async throws -> Version {
-        
         guard let currentVersion: String = req.query["current"] else {
             throw Abort(.badRequest)
         }
@@ -34,7 +28,5 @@ extension AuxiliarController {
             live: appStoreVersion,
             needsUpdate: needsUpdate
         )
-        
     }
-    
 }
