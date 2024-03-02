@@ -31,9 +31,8 @@ final class News: Model, Content {
     // Inits
     init() {}
     
-    init(id: UUID? = nil, createdAt: Date? = nil, title: String, body: String, imageURL: String? = nil) {
+    init(id: UUID? = nil, title: String, body: String, imageURL: String? = nil) {
         self.id = id
-        self.createdAt = createdAt
         self.title = title
         self.body = body
         self.imageURL = imageURL

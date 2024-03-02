@@ -32,9 +32,8 @@ final class User: Model {
     // Inits
     init() {}
     
-    init(id: UUID? = nil, createdAt: Date? = nil, name: String, email: String, password: String) {
+    init(id: UUID? = nil, name: String, email: String, password: String) {
         self.id = id
-        self.createdAt = createdAt
         self.name = name
         self.email = email
         self.password = password
