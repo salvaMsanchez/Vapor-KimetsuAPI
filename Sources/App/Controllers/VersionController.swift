@@ -8,19 +8,19 @@
 import Foundation
 import Vapor
 
-struct AuxiliarController: RouteCollection {
+struct VersionController: RouteCollection {
     func boot(routes: Vapor.RoutesBuilder) throws {
         routes.get("version", use: needsUpdate)
     }
 }
 
-extension AuxiliarController {
+extension VersionController {
     func needsUpdate(req: Request) async throws -> Version {
         guard let currentVersion: String = req.query["current"] else {
             throw Abort(.badRequest)
         }
         
-        let appStoreVersion = "1.0.8"
+        let appStoreVersion = "1.0.0"
         let needsUpdate = currentVersion < appStoreVersion
         
         return Version(
