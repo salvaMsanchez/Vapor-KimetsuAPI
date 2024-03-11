@@ -10,7 +10,7 @@ import Fluent
 
 struct PopulateInitialData_v0: AsyncMigration {
     func prepare(on database: FluentKit.Database) async throws {
-        // MARK: - News
+        // MARK: - News -
         let news0 = News(title: "Kimetsu no Yaiba: Mugen Train bate récords en Japón", body: "La película de anime Kimetsu no Yaiba: Mugen Train continúa su racha de éxito al convertirse en la película de mayor recaudación en la historia del cine japonés. Con una trama emocionante y animación impresionante, los fanáticos han acudido en masa a los cines, solidificando su posición como un fenómeno cultural.", imageURL: "/images/kimetsu_no_yaiba_mugen_train.jpg")
 
         let news1 = News(title: "Kimetsu no Yaiba anuncia segunda temporada", body: "Los aficionados de Kimetsu no Yaiba están de enhorabuena con el anuncio oficial de una segunda temporada. La noticia ha generado gran expectación entre los seguidores de la serie, quienes esperan con ansias nuevas aventuras de Tanjiro y sus compañeros demonios.", imageURL: "/images/kimetsu_no_yaiba_season2.jpg")
@@ -22,8 +22,7 @@ struct PopulateInitialData_v0: AsyncMigration {
         
         try await [news0, news1, news2, news3].create(on: database)
         
-        
-        // MARK: - Characters
+        // MARK: - Characters -
         let tanjiro = Character(name: "Tanjiro Kamado")
         let nezuko = Character(name: "Nezuko Kamado")
         let zenitsu = Character(name: "Zenitsu Agatsuma")
@@ -43,7 +42,7 @@ struct PopulateInitialData_v0: AsyncMigration {
             }
         }
         
-        // Mark: - Episodes
+        // MARK: - Episodes -
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         
@@ -75,7 +74,7 @@ struct PopulateInitialData_v0: AsyncMigration {
             }
         }
         
-        // MARK: - Episode+Character
+        // MARK: - Episode+Character -
         try await episode001.$characters.attach([tanjiro, nezuko, giyuu], on: database)
         try await episode002.$characters.attach([tanjiro, nezuko, giyuu], on: database)
         try await episode003.$characters.attach([tanjiro, giyuu], on: database)
