@@ -19,7 +19,11 @@ struct EpisodesController: RouteCollection {
 
 extension EpisodesController {
     func allEpisodes(req: Request) async throws -> [Episode.List] {
-        try await Episode.query(on: req.db).all().map({ episode in
+        try await Episode
+            .query(on: req.db)
+            .sort(\.$episodeNumber, .ascending)
+            .all()
+            .map({ episode in
             Episode.List(id: episode.id, episodeNumber: episode.episodeNumber, title: episode.title, imageURL: episode.imageURL)
         })
     }
