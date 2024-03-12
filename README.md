@@ -28,7 +28,6 @@
 	* [Descripción](#descripcion)
 		* [Características principales](#caracteristicas)
 	* [Instalación](#instalacion)
-	* [Uso](#uso)
 	* [Endpoints](#endpoints)
 		* [Check Version](#version)
 		* [Sign Up](#signUp)
@@ -107,15 +106,6 @@ Para comenzar a utilizar esta API Rest de Kimetsu no Yaiba, sigue estos sencillo
 	* Ejecuta el proyecto en Xcode.
 	* Verifica en la terminal que el servidor se ha inicializado correctamente.
 
-<a name="uso"></a>
-### Uso
-
-// TODO:
-
-Explicar cómo usar la API, incluyendo cómo iniciar el servidor.
-Proporcionar ejemplos de solicitudes y respuestas para mostrar cómo interactuar con los endpoints.
-Explicar cómo se realiza la autenticación o autorización.
-
 <a name="endpoints"></a>
 ### Endpoints
 
@@ -168,7 +158,7 @@ Explicar cómo se realiza la autenticación o autorización.
 * **Método:** GET
 * **Headers:**
 	* `Kimetsu-ApiKey`: API_KEY
-	* `Authorization`: Basic Auth + email
+	* `Authorization`: Basic Auth + email + password
 * **Respuesta:**
 
 	```json

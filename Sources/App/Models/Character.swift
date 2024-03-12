@@ -19,8 +19,8 @@ final class Character: Model {
     @Field(key: "name")
     var name: String
     
-    //@Siblings(through: EpisodeCharacterPivot.self, from: \.$character, to: \.$episode)
-    //var episodes: [Episode]
+    @Siblings(through: EpisodeCharacterPivot.self, from: \.$character, to: \.$episode)
+    var episodes: [Episode]
     
     // Inits
     init() {}
