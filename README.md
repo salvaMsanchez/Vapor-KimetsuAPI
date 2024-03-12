@@ -30,6 +30,14 @@
 	* [Instalación](#instalacion)
 	* [Uso](#uso)
 	* [Endpoints](#endpoints)
+		* [Check Version](#version)
+		* [Sign Up](#signUp)
+		* [Sign In](#signIn)
+		* [Refresh Token](#refresh)
+		* [All News](#allNews)
+		* [News by ID](#newsId)
+		* [All Episodes](#allEpisodes)
+		* [Episode by ID](#episodeId)
 * [Licencia](#licencia)
 
 <a name="kimetsu"></a>
@@ -111,10 +119,179 @@ Explicar cómo se realiza la autenticación o autorización.
 <a name="endpoints"></a>
 ### Endpoints
 
-// TODO:
+<a name="version"></a>
+#### Check Version
 
-Enumerar y describir todos los endpoints disponibles en la API.
-Proporcionar detalles sobre los parámetros aceptados y los formatos de respuesta.
+* **Descripción:** permite verificar si la versión actual de la aplicación necesita ser actualizada.
+* **URL:** `<API_URL>/api/v1/version`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+* **URL Params:**
+	* `current`: valor actual de la versión de la aplicación.
+* **Respuesta:**
+
+	```json
+	{
+ 	 	"current": "1.0.0",
+  		"needsUpdate": true,
+  		"live": "1.0.8"
+	}
+	```  
+
+<a name="signUp"></a>
+#### Sign Up
+
+* **Descripción:** permite a los usuarios registrarse en la aplicación.
+* **URL:** `<API_URL>/api/v1/auth/signup`
+* **Método:** POST
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+* **Body:**
+	* `name`: nombre del usuario
+	* `email`: correo electrónico del usuario
+	* `password`: contraseña del usuario
+* **Respuesta:**
+
+	```json
+	{
+  		"accessToken": "<accessToken>",
+  		"refreshToken": "<refreshToken>"
+	}
+	``` 
+
+<a name="signIn"></a>
+#### Sign In
+
+* **Descripción:** permite a los usuarios iniciar sesión en la aplicación.
+* **URL:** `<API_URL>/api/v1/auth/signin`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Basic Auth + email
+* **Respuesta:**
+
+	```json
+	{
+  		"accessToken": "<accessToken>",
+  		"refreshToken": "<refreshToken>"
+	}
+	``` 
+
+<a name="refresh"></a>
+#### Refresh Token
+
+* **Descripción:** permite refrescar el token de acceso.
+* **URL:** `<API_URL>/api/v1/auth/refresh`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Bearer + Refresh Token
+* **Respuesta:**
+
+	```json
+	{
+  		"accessToken": "<accessToken>",
+  		"refreshToken": "<refreshToken>"
+	}
+	``` 
+
+<a name="allNews"></a>
+#### All News
+
+* **Descripción:** devuelve todas las noticias disponibles.
+* **URL:** `<API_URL>/api/v1/news`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Bearer + Access Token
+* **Respuesta:**
+
+	```json
+	[
+  		{
+    		"body": "...",
+    		"id": "...",
+    		"title": "...",
+    		"imageURL": "...",
+    		"createdAt": "..."
+  		},
+  		...
+	]
+	``` 
+
+<a name="newsId"></a>
+#### News by Id
+
+* **Descripción:** devuelve una noticia específica por su ID.
+* **URL:** `<API_URL>/api/v1/news/:id`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Bearer + Access Token
+* **Respuesta:**
+
+	```json
+	{
+  		"body": "...",
+  		"id": "...",
+  		"title": "...",
+  		"imageURL": "...",
+  		"createdAt": "..."
+	}
+	``` 
+
+<a name="allEpisodes"></a>
+#### All Episodes
+
+* **Descripción:** devuelve todos los episodios disponibles.
+* **URL:** `<API_URL>/api/v1/episodes`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Bearer + Access Token
+* **Respuesta:**
+
+	```json
+	[
+  		{
+    		"id": "...",
+    		"episodeNumber": "...",
+    		"title": "...",
+    		"imageURL": "..."
+  		},
+  		...
+	]
+	``` 
+
+<a name="episodeId"></a>
+#### Episode by Id
+
+* **Descripción:** devuelve información detallada sobre un episodio específico basado en su ID.
+* **URL:** `<API_URL>/api/v1/episodes/:id`
+* **Método:** GET
+* **Headers:**
+	* `Kimetsu-ApiKey`: API_KEY
+	* `Authorization`: Bearer + Access Token
+* **Respuesta:**
+
+	```json
+	{
+  		"summary": "...",
+  		"characters": [
+    		{
+      			"id": "...",
+      			"name": "..."
+    		},
+    		...
+  		],
+  		"id": "...",
+  		"episodeNumber": "...",
+  		"title": "...",
+  		"airedAt": "...",
+  		"imageURL": "..."
+	}
+	```
 
 <a name="licencia"></a>
 ## Licencia
@@ -126,5 +303,3 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](https://g
 [Subir ⬆️](#top)
 
 [^datos]: Los datos estáticos almacenados en la BBDD que se presentan como respuesta en la API han sido generados con ChatGPT, por lo que su información puede ser inexacta.
-
-
