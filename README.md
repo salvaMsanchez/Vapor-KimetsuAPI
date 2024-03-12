@@ -28,6 +28,7 @@
 	* [Descripción](#descripcion)
 		* [Características principales](#caracteristicas)
 	* [Instalación](#instalacion)
+	* [BBDD - Diagrama Entidad-Relación](#diagrama)
 	* [Endpoints](#endpoints)
 		* [Check Version](#version)
 		* [Sign Up](#signUp)
@@ -42,7 +43,7 @@
 <a name="kimetsu"></a>
 ## ⚔️ Kimetsu no Yaiba API ⚔️
 
-![Kimetsu no Yaiba image](imagesReadme/kimetsu.jpeg)
+![API demo](assetsReadme/demoAPI.gif)
 
 <a name="descripcion"></a>
 ### Descripción
@@ -105,6 +106,11 @@ Para comenzar a utilizar esta API Rest de Kimetsu no Yaiba, sigue estos sencillo
 
 	* Ejecuta el proyecto en Xcode.
 	* Verifica en la terminal que el servidor se ha inicializado correctamente.
+
+<a name="diagrama"></a>
+### BBDD - Diagrama Entidad-Relación
+
+![Entity-Relationship diagram image](assetsReadme/diagrama.png)
 
 <a name="endpoints"></a>
 ### Endpoints
