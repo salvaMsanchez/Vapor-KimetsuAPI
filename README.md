@@ -38,6 +38,11 @@
 		* [News by ID](#newsId)
 		* [All Episodes](#allEpisodes)
 		* [Episode by ID](#episodeId)
+	* [Autenticación](#autenticacion)
+		* [Modelos y DTOs](#modelos)
+		* [Middleware](#middleware)
+		* [Controlador de Autenticación](#controller)
+		* [Rutas](#routes)
 * [Licencia](#licencia)
 
 <a name="kimetsu"></a>
@@ -288,6 +293,51 @@ Para comenzar a utilizar esta API Rest de Kimetsu no Yaiba, sigue estos sencillo
   		"imageURL": "..."
 	}
 	```
+
+<a name="autenticacion"></a>
+### Autenticación
+
+La seguridad es una parte fundamental en cualquier aplicación web. En esta sección, se describe cómo se maneja la autenticación en la API utilizando JSON Web Tokens (JWT) y middleware de API Key para garantizar un acceso seguro a los endpoints.
+
+<a name="modelos"></a>
+#### Modelos y DTOs
+
+##### Modelo `User`
+
+El modelo `User` representa a los usuarios de la aplicación. Contiene propiedades como nombre, correo electrónico y contraseña. Además, se definen estructuras para la creación de usuarios y la representación pública de los mismos.
+
+##### JWTToken
+
+El struct `JWTToken` representa los tokens JWT utilizados para autenticar a los usuarios. Se definen distintos tipos de tokens (de acceso y de actualización), así como métodos para generar y verificar tokens.
+
+<a name="middleware"></a>
+#### Middleware
+
+##### APIKeyMiddleware
+
+El middleware `APIKeyMiddleware` garantiza que todas las solicitudes incluyan una clave de API válida en los encabezados. Esto ayuda a proteger la API contra accesos no autorizados.
+
+<a name="controller"></a>
+#### Controlador de Autenticación
+
+El `AuthController` maneja las solicitudes relacionadas con la autenticación de usuarios. Contiene métodos para registrarse, iniciar sesión y actualizar tokens de acceso.
+
+<a name="routes"></a>
+#### Rutas
+
+Las rutas están protegidas por el middleware `APIKeyMiddleware`, lo que garantiza que solo las solicitudes con una clave de API válida sean procesadas. Además, algunas rutas están protegidas por autenticación JWT para garantizar que solo los usuarios autenticados puedan acceder a ciertos recursos.
+
+```swift
+// Ejemplo de cómo se registran los controladores en las rutas
+func routes(_ app: Application) throws {
+    try app.group("api", "v1") { builder in
+        try builder.group(APIKeyMiddleware()) { builder in
+            try builder.register(collection: AuthController())
+            // Otros controladores...
+        }
+    }
+}
+```
 
 <a name="licencia"></a>
 ## Licencia
