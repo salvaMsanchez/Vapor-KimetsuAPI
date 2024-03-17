@@ -43,7 +43,7 @@
 		* [Middleware](#middleware)
 		* [Controlador de Autenticación](#controller)
 		* [Rutas](#routes)
-* [Licencia](#licencia)
+* [©️ Licencia](#licencia)
 
 <a name="kimetsu"></a>
 ## ⚔️ Kimetsu no Yaiba API ⚔️
@@ -340,7 +340,7 @@ func routes(_ app: Application) throws {
 ```
 
 <a name="licencia"></a>
-## Licencia
+## ©️ Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](https://github.com/salvaMsanchez/Vapor-Servers/blob/main/LICENSE.md) para más detalles.
 
